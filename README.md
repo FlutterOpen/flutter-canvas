@@ -1,7 +1,7 @@
 ### :heart: Star :heart: the repo to support the project or :smile:[Follow Me](https://github.com/nb312).Thanks!
 Facebook Page | Facebook Group | Developer 
 --- | --- | ---
-[Flutter Open ](https://www.facebook.com/flutteropen) | [Flutter Open](https://www.facebook.com/groups/948618338674126/) | [nb312](https://github.com/nb312)
+[Flutter Open ](https://www.facebook.com/flutteropen) | [Flutter Open](https://www.facebook.com/groups/948618338674126/) | [NieBin](https://github.com/nb312)
 
 # Canvas tutorial 01 | How to use the canvas in the flutter?
 ## 0. What we will create?
