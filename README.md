@@ -20,7 +20,7 @@ The notes of circles with center coordinate and radius.
 the rotate upward flutter logo with point coordinate   
 
 If you want to draw some shape by yourself, you should do this by yourself with PS or other picture modify tools. Also, do not forget the colors.
-```
+```dart
 const BLUE_NORMAL = Color(0xff54c5f8);
 const GREEN_NORMAL = Color(0xff6bde54);
 const BLUE_DARK2 = Color(0xff01579b);
@@ -33,7 +33,7 @@ What we can we do with this, let's see the code below
 <img src="doc/canvas_change.png" height ="320"/>   
 
 First, we should define a util class
-```
+```dart
 import 'package:flutter/material.dart';
 import 'dart:math';
 class SizeUtil {
@@ -77,14 +77,14 @@ class SizeUtil {
 ``` 
 
 This will let you change the design size to your logic size. The second just use it.you can init the size with device size, that means you draw the shape as much as the screen if you do not assign another size. 
-```
+```dart
 SizeUtil.size = MediaQuery.of(context).size;
 ```
 
 ## 3. Define CustomPainter  
 This is the most import class to define our own shape, all of the logical to draw shape is writed here.
 First, create a class extends CustomPainter and create a paint. If the size is not small than 1.0 then, assign it as the logical size.
-```
+```dart
 class OpenPainter extends CustomPainter {
 @override
 void paint(Canvas canvas, Size size) {
@@ -102,7 +102,7 @@ var paint = Paint()
 }
 ``` 
 Then, draw the Flutter logo. But first, we should use the 'canvas.drawPath' to draw a quadrilateral.
-```
+```dart
 void _drawFourShape(Canvas canvas,
     {Offset left_top,
     Offset right_top,
@@ -126,7 +126,7 @@ Offset _convertLogicSize(Offset off, Size size) {
 }
 ``` 
 Last, we will draw the circles in the function of 'paint(canvas, size)'.
-```
+```dart
 var circleCenter = Offset(SizeUtil.getAxisX(294), SizeUtil.getAxisY(175));
 paint.color = BLUE_NORMAL;
 canvas.drawCircle(circleCenter, SizeUtil.getAxisBoth(174), paint);
@@ -136,19 +136,19 @@ paint.color = Colors.white;
 canvas.drawCircle(circleCenter, SizeUtil.getAxisBoth(80), paint);
 ```
 Finally, we should save the canvas.
-```
+```dart
 canvas.save();
 canvas.restore();
 ```
 4. Use the OpenPainter
 We define the OpenPainter now, so how can we use the OpenPainter.The most import class is CustomPaint. you should use it as a parent widget.
-```
+```dart
 CustomPaint(
   painter: OpenPainter(),
 )
 ```
 Then we can use the CustomPaint as a common widget to show our shape. In our home page, we can use this like this.
-```
+```dart
 Scaffold(
   appBar: AppBar(
     title: Text("First Canvas"),
@@ -170,7 +170,7 @@ It will show like this.
 with logical size of width: 280,height: 320.0
 
 If we change the size of the container as we say above 200*400 for a logic size，it will be a bit different.
-```
+```dart
 Container(
 //          width: 280,
 //          height: 320.0,
@@ -185,7 +185,7 @@ Container(
 with logical size of width: 200,height: 400.0
 
 If we do not set the size, the size in the 'paint(canvas, size)' function will be zero, we will fit the device size, let's check whether it right or not, this time we should cancel the parent widget of Center, then we can visit it.
-```
+```dart
 Scaffold(
 //      appBar: AppBar(
 //        title: Text("First Canvas"),
