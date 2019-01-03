@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_canvas/logo/OpenPainter.dart';
 import 'package:flutter_canvas/const/size_const.dart';
 import 'package:flutter_canvas/logo/LogoPage.dart';
 import 'package:flutter_canvas/const/PageConst.dart';
