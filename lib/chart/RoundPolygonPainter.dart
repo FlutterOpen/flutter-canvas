@@ -6,9 +6,9 @@
 
 import "package:flutter/material.dart";
 
-//import 'package:flutter_canvas/SizeUtil.dart';
+//import 'package:flutter_canvas/size_const.dart';
 import 'dart:math';
-import 'SizeUtil.dart';
+import 'package:flutter_canvas/const/size_const.dart';
 import 'package:flutter_canvas/math/line.dart';
 
 const BLUE_NORMAL = Color(0xff54c5f8);
@@ -23,32 +23,22 @@ const RED_DARK5 = Color(0xfffd86a5);
 const YELLOW_NORMAL = Color(0xfffcce89);
 const List<Point> POINT = [Point(100, 100)];
 
+SizeUtil get _sizeUtil {
+  return SizeUtil.getInstance(key: SizeKeyConst.ROUND_ANGLE_KEY);
+}
+
 class ChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     //580*648
     if (size.width > 1.0 && size.height > 1.0) {
       print(">1.9");
-      SizeUtil.size = size;
+      _sizeUtil.logicSize = size;
     }
     var paint = Paint()
       ..style = PaintingStyle.fill
       ..color = BLUE_NORMAL
       ..isAntiAlias = true;
-    var path = Path()
-      ..moveTo(100.0, 100)
-      ..lineTo(194, 194)
-      ..arcToPoint(
-        Offset(190, 200),
-        radius: Radius.circular(4),
-      )
-      ..lineTo(100, 200);
-    var list = [
-      Point(100.0, 100.0),
-      Point(200.0, 100.0),
-      Point(200.0, 200.0),
-      Point(100.0, 200.0),
-    ];
     List<Point> list1 = [
       Point(250.0, 0.0),
       Point(425.0, 75.0),
@@ -123,14 +113,10 @@ class ChartPainter extends CustomPainter {
       Point(140.0, 353.0),
       Point(100.0, 250.0),
     ];
-
     paint.color = YELLOW_NORMAL.withOpacity(0.5);
     _drawWithPoint(canvas, paint, listYellow);
-
-//    canvas.drawPath(path1, paint);
-
-//    _drawFourShape(canvas, left_top: Offset(291, 178));
-//    canvas.drawPath(path1, paint);
+    canvas.save();
+    canvas.restore();
   }
 
   void _drawWithPoint(canvas, paint, list, {hasShadow = false}) {
@@ -145,7 +131,7 @@ class ChartPainter extends CustomPainter {
   List<Point> _resizePoint(List<Point> list) {
     List<Point> l = List<Point>();
     for (var p in list) {
-      l.add(Point(SizeUtil.getAxisX(p.x), SizeUtil.getAxisY(p.y)));
+      l.add(Point(_sizeUtil.getAxisX(p.x), _sizeUtil.getAxisY(p.y)));
     }
     return l;
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/logo/OpenPainter.dart';
-import 'package:flutter_canvas/SizeUtil.dart';
 import 'OpenPainter.dart';
 import 'package:flutter_canvas/const/PageConst.dart';
 
@@ -12,7 +11,6 @@ class LogoPage extends StatefulWidget {
 class _LogoState extends State<LogoPage> {
   @override
   Widget build(BuildContext context) {
-    SizeUtil.size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(PageConst.LOGO_PAGE),

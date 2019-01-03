@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_canvas/logo/OpenPainter.dart';
-import 'package:flutter_canvas/SizeUtil.dart';
+import 'package:flutter_canvas/const/size_const.dart';
 import 'package:flutter_canvas/logo/LogoPage.dart';
 import 'package:flutter_canvas/const/PageConst.dart';
 import 'package:flutter_canvas/const/ImageConst.dart';
-import "package:flutter_canvas/chart/ChartPage.dart";
+import "package:flutter_canvas/chart/RoundPolygonPage.dart";
 
 void main() => runApp(MyApp());
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         PageConst.LOGO_PAGE: (context) => LogoPage(),
-        PageConst.CHART_PAGE: (context) => ChartPage(),
+        PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => ChartPage(),
       },
     );
   }
@@ -30,22 +30,35 @@ class HomePage extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-const PAGES = [PageConst.LOGO_PAGE, PageConst.CHART_PAGE];
+//const PAGES = [PageConst.LOGO_PAGE, PageConst.CHART_PAGE];
+const PAGES_CONST = [
+  {
+    "image": ImageConst.LOGO_CANVAS,
+    "title": "Use canvas",
+    "click": PageConst.LOGO_PAGE,
+  },
+  {
+    "image": ImageConst.CIRCLE_ROUND_ANGLE,
+    "title": "Round angle polygon",
+    "click": PageConst.ROUND_ANGLE_POLYGON_PAGE,
+  },
+];
 
 class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    SizeUtil.size = MediaQuery.of(context).size;
+    SizeUtil.getInstance().logicSize = MediaQuery.of(context).size;
+    SizeUtil.initDesignSize();
     return Scaffold(
       appBar: AppBar(
-        title: Text("First Canvas"),
+        title: Text("Choose Page"),
       ),
       body: Container(
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: 1,
             mainAxisSpacing: 10,
-            childAspectRatio: 0.8,
+            childAspectRatio: 1.3,
           ),
           itemBuilder: (context, index) {
             return InkWell(
@@ -53,24 +66,28 @@ class _HomeState extends State<HomePage> {
                 children: <Widget>[
                   Center(
                     child: Image.asset(
-                      ImageConst.LOGO_CANVAS,
+                      PAGES_CONST[index]["image"],
                       fit: BoxFit.cover,
                     ),
                   ),
                   Container(
-                    child: Center(
-                      child: Text("Logo Page"),
+                    alignment: AlignmentDirectional.bottomCenter,
+                    padding: EdgeInsets.only(bottom: 10.0),
+                    child: Text(
+                      PAGES_CONST[index]["title"],
+                      style: TextStyle(color: Colors.grey[700]),
                     ),
                   )
                 ],
               ),
               onTap: () {
-                Navigator.of(context).pushNamed(PAGES[index % 2]);
-                print("hello");
+                Navigator.of(context).pushNamed(
+                  PAGES_CONST[index]["click"],
+                );
               },
             );
           },
-          itemCount: 10,
+          itemCount: PAGES_CONST.length,
         ),
       ),
     );

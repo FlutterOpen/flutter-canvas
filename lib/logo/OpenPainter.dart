@@ -5,13 +5,17 @@
 ///
 
 import "package:flutter/material.dart";
-import 'package:flutter_canvas/SizeUtil.dart';
+import 'package:flutter_canvas/const/size_const.dart';
 import 'dart:math';
 
 const BLUE_NORMAL = Color(0xff54c5f8);
 const GREEN_NORMAL = Color(0xff6bde54);
 const BLUE_DARK2 = Color(0xff01579b);
 const BLUE_DARK1 = Color(0xff29b6f6);
+
+SizeUtil get _sizeUtil {
+  return SizeUtil.getInstance(key: SizeKeyConst.LOGO_KEY);
+}
 
 class OpenPainter extends CustomPainter {
   void _drawFourShape(Canvas canvas,
@@ -34,7 +38,7 @@ class OpenPainter extends CustomPainter {
   }
 
   Offset _convertLogicSize(Offset off, Size size) {
-    return Offset(SizeUtil.getAxisX(off.dx), SizeUtil.getAxisY(off.dy));
+    return Offset(_sizeUtil.getAxisX(off.dx), _sizeUtil.getAxisY(off.dy));
   }
 
   @override
@@ -42,7 +46,7 @@ class OpenPainter extends CustomPainter {
     //580*648
     if (size.width > 1.0 && size.height > 1.0) {
       print(">1.9");
-      SizeUtil.size = size;
+      _sizeUtil.logicSize = size;
     }
     var paint = Paint()
       ..style = PaintingStyle.fill
@@ -78,18 +82,15 @@ class OpenPainter extends CustomPainter {
         left_bottom: Offset(70, 402),
         size: size,
         paint: paint);
-    var circleCenter = Offset(SizeUtil.getAxisX(294), SizeUtil.getAxisY(175));
+    var circleCenter = Offset(_sizeUtil.getAxisX(294), _sizeUtil.getAxisY(175));
     paint.color = BLUE_NORMAL;
-    canvas.drawCircle(circleCenter, SizeUtil.getAxisBoth(174), paint);
+    canvas.drawCircle(circleCenter, _sizeUtil.getAxisBoth(174), paint);
     paint.color = GREEN_NORMAL;
-    canvas.drawCircle(circleCenter, SizeUtil.getAxisBoth(124), paint);
+    canvas.drawCircle(circleCenter, _sizeUtil.getAxisBoth(124), paint);
     paint.color = Colors.white;
-    canvas.drawCircle(circleCenter, SizeUtil.getAxisBoth(80), paint);
+    canvas.drawCircle(circleCenter, _sizeUtil.getAxisBoth(80), paint);
     canvas.save();
     canvas.restore();
-
-//    _drawFourShape(canvas, left_top: Offset(291, 178));
-//    canvas.drawPath(path1, paint);
   }
 
   @override

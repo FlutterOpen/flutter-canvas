@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_canvas/logo/OpenPainter.dart';
-import 'package:flutter_canvas/SizeUtil.dart';
-import './ChartPainter.dart';
+import './RoundPolygonPainter.dart';
 import 'package:flutter_canvas/const/PageConst.dart';
 
 class ChartPage extends StatefulWidget {
@@ -12,7 +10,6 @@ class ChartPage extends StatefulWidget {
 class _ChartState extends State<ChartPage> {
   @override
   Widget build(BuildContext context) {
-    SizeUtil.size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(PageConst.LOGO_PAGE),
