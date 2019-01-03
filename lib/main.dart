@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         PageConst.LOGO_PAGE: (context) => LogoPage(),
-        PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => ChartPage(),
+        PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => RoundPolygonPage(),
       },
     );
   }

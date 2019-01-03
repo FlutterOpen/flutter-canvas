@@ -27,7 +27,7 @@ SizeUtil get _sizeUtil {
   return SizeUtil.getInstance(key: SizeKeyConst.ROUND_ANGLE_KEY);
 }
 
-class ChartPainter extends CustomPainter {
+class RoundPolygonPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     //580*648
@@ -121,7 +121,7 @@ class ChartPainter extends CustomPainter {
 
   void _drawWithPoint(canvas, paint, list, {hasShadow = false}) {
     list = _resizePoint(list);
-    var path = _drawRectangle(list, 4.0, canvas, paint);
+    var path = _drawRoundPolygon(list, 4.0, canvas, paint);
     if (hasShadow) {
       canvas.drawShadow(path, Colors.black26, 10.0, true);
     }
@@ -136,7 +136,7 @@ class ChartPainter extends CustomPainter {
     return l;
   }
 
-  Path _drawRectangle(List<Point> ps, double distance, Canvas canvas, paint) {
+  Path _drawRoundPolygon(List<Point> ps, double distance, Canvas canvas, paint) {
     var path = Path();
     ps.add(ps[0]);
     ps.add(ps[1]);
