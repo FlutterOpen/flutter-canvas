@@ -5,7 +5,7 @@
 ///
 
 import "package:flutter/material.dart";
-import 'SizeUtil.dart';
+import 'package:flutter_canvas/SizeUtil.dart';
 import 'dart:math';
 
 const BLUE_NORMAL = Color(0xff54c5f8);
