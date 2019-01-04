@@ -28,26 +28,6 @@ SizeUtil get _sizeUtil {
   return SizeUtil.getInstance(key: SizeKeyConst.REGULAR_POLYGON_KEY);
 }
 
-void _testCircle() {
-  var center = Point(100.0, 100.0);
-  var p1 =
-      Point(center.x + 100.0 * cos(pi / 2), center.y + 100.0 * sin(pi / 2));
-  print("p1.x: ${p1.x},p1.y:${p1.y}");
-  var p2 = Point(center.x + 100.0 * cos(pi), center.y + 100.0 * sin(pi));
-  print("p2.x: ${p2.x},p2.y:${p2.y}");
-
-  var p3 = Point(
-      center.x + 100.0 * cos(pi + pi / 2), center.y + 100.0 * sin(pi + pi / 2));
-  print("p3.x: ${p3.x},p3.y:${p3.y}");
-  var p4 =
-      Point(center.x + 100.0 * cos(pi + pi), center.y + 100.0 * sin(pi + pi));
-  print("p4.x: ${p4.x},p4.y:${p4.y}");
-
-  var p5 =
-      Point(center.x + 100.0 * cos(4 * pi), center.y + 100.0 * sin(4 * pi));
-  print("p5.x: ${p5.x},p5.y:${p5.y}");
-}
-
 class RegularPolygonPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -56,30 +36,12 @@ class RegularPolygonPainter extends CustomPainter {
       print(">1.9");
       _sizeUtil.logicSize = size;
     }
-    _testCircle();
     var paint = Paint()
       ..style = PaintingStyle.fill
       ..color = BLUE_NORMAL
-      ..strokeWidth = 2.0
+      ..strokeWidth = 10.0
       ..isAntiAlias = true;
     var center = Point(250.0, 250.0);
-//    List<Point> list1 = PolygonUtil.convertToPoints(center, 250, 3);
-//    paint.color = RED_DARK1;
-//    _drawWithPoint(canvas, paint, list1);
-//
-//    List<Point> list2 = PolygonUtil.convertToPoints(center, 200, 3);
-//    paint.color = RED_DARK2;
-//    _drawWithPoint(canvas, paint, list2);
-//    List<Point> list3 = PolygonUtil.convertToPoints(center, 150, 3);
-//    paint.color = RED_DARK3;
-//    _drawWithPoint(canvas, paint, list3);
-//
-//    List<Point> list4 = PolygonUtil.convertToPoints(center, 100, 3);
-//    paint.color = YELLOW_NORMAL;
-//    _drawWithPoint(canvas, paint, list4);
-//    List<Point> list5 = PolygonUtil.convertToPoints(center, 100, 3);
-//    paint.color = RED_DARK4;
-//    _drawWithPoint(canvas, paint, list4);
     var colors = [
       RED_DARK1,
       RED_DARK2,
@@ -92,26 +54,27 @@ class RegularPolygonPainter extends CustomPainter {
         center: center,
         max: 250,
         min: 10,
-        count: 100,
+        count: 6,
         polygonCount: 4,
-        step: 10,
-        colors: colors);
+        step: 30,
+        colors: colors,
+        rotateRadio: 0.0);
     canvas.save();
     canvas.restore();
   }
 
-  void _drawSameCenterPolygon(
-    Canvas canvas,
-    Paint paint, {
-    Point center,
-    double max,
-    double min = 1.0,
-    double step = 1.0,
-    int count,
-    int polygonCount,
-    List<Color> colors,
-  }) {
+  void _drawSameCenterPolygon(Canvas canvas, Paint paint,
+      {Point center,
+      double max = 1.0,
+      double min = 1.0,
+      double step = 1.0,
+      int count = 1,
+      int polygonCount,
+      List<Color> colors,
+      rotateRadio = 0.1}) {
     for (int i = 0; i < count; i++) {
+      assert(polygonCount >= 3);
+      assert(colors != null && colors.length > 0);
       var radius = max - i * step;
       var index = i % colors.length;
       paint.color = colors[index];
@@ -127,7 +90,7 @@ class RegularPolygonPainter extends CustomPainter {
       }
       List<Point> list4 = PolygonUtil.convertToPoints(
           center, radius, polygonCount,
-          startRadian: i * pi / 10);
+          startRadian: i * pi * rotateRadio);
       _drawWithPoint(canvas, paint, list4);
     }
   }

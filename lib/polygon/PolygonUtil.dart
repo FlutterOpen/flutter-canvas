@@ -38,9 +38,6 @@ class PolygonUtil {
     double perRadian = 2.0 * pi / num;
     for (int i = 0; i < num; i++) {
       double radian = i * perRadian + startRadian;
-      if (radian > 2 * pi) {
-        radian -= 2 * pi;
-      }
       var p = LineCircle.radianPoint(center, r, radian);
       list.add(p);
     }
