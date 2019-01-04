@@ -84,8 +84,8 @@ class LineInterCircle {
 
   ///intersection point
   static Point intersectionPoint(Point p1, Point p2, double r) {
-    if (p1.x == p2.x) return _equalX(p1, p2, r);
-    if (p1.y == p2.y) return _equalY(p1, p2, r);
+    if (p1.x > p2.x - 1 && p1.x < p2.x + 1) return _equalX(p1, p2, r);
+    if (p1.y > p2.y - 1 && p1.y < p2.y + 1) return _equalY(p1, p2, r);
     var delta = sqrt(paramA(p1, p2) * paramA(p1, p2) - 4 * paramB(p1, p2, r));
     if (delta < 0.0) {
       //when no intersection, i will return the center of the circ  le.

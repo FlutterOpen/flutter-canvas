@@ -4,10 +4,10 @@ import 'package:flutter_canvas/const/PageConst.dart';
 
 class RoundPolygonPage extends StatefulWidget {
   @override
-  _ChartState createState() => _ChartState();
+  _RoundState createState() => _RoundState();
 }
 
-class _ChartState extends State<RoundPolygonPage> {
+class _RoundState extends State<RoundPolygonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

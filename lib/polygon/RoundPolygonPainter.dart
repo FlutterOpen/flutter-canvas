@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import 'dart:math';
 import 'package:flutter_canvas/const/size_const.dart';
 import 'package:flutter_canvas/math/line.dart';
+import 'PolygonUtil.dart';
 
 const BLUE_NORMAL = Color(0xff54c5f8);
 const GREEN_NORMAL = Color(0xff6bde54);
@@ -121,7 +122,7 @@ class RoundPolygonPainter extends CustomPainter {
 
   void _drawWithPoint(canvas, paint, list, {hasShadow = false}) {
     list = _resizePoint(list);
-    var path = _drawRoundPolygon(list, 4.0, canvas, paint);
+    var path = PolygonUtil.drawRoundPolygon(list, canvas, paint, distance: 2.0);
     if (hasShadow) {
       canvas.drawShadow(path, Colors.black26, 10.0, true);
     }
@@ -134,27 +135,6 @@ class RoundPolygonPainter extends CustomPainter {
       l.add(Point(_sizeUtil.getAxisX(p.x), _sizeUtil.getAxisY(p.y)));
     }
     return l;
-  }
-
-  Path _drawRoundPolygon(List<Point> ps, double distance, Canvas canvas, paint) {
-    var path = Path();
-    ps.add(ps[0]);
-    ps.add(ps[1]);
-    var p0 = LineInterCircle.intersectionPoint(ps[1], ps[0], distance);
-    path.moveTo(p0.x, p0.y);
-    for (int i = 0; i < ps.length - 2; i++) {
-      var p1 = ps[i];
-      var p2 = ps[i + 1];
-      var p3 = ps[i + 2];
-      var interP1 = LineInterCircle.intersectionPoint(p1, p2, distance);
-      var interP2 = LineInterCircle.intersectionPoint(p3, p2, distance);
-      path.lineTo(interP1.x, interP1.y);
-      path.arcToPoint(
-        Offset(interP2.x, interP2.y),
-        radius: Radius.circular(distance * 6),
-      );
-    }
-    return path;
   }
 
   @override

@@ -3,7 +3,8 @@ import 'package:flutter_canvas/const/size_const.dart';
 import 'package:flutter_canvas/logo/LogoPage.dart';
 import 'package:flutter_canvas/const/PageConst.dart';
 import 'package:flutter_canvas/const/ImageConst.dart';
-import "package:flutter_canvas/chart/RoundPolygonPage.dart";
+import "package:flutter_canvas/polygon/RoundPolygonPage.dart";
+import 'package:flutter_canvas/polygon/RegularPolygonPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         PageConst.LOGO_PAGE: (context) => LogoPage(),
         PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => RoundPolygonPage(),
+        PageConst.REGULAR_POLYGON_PAGE: (context) => RegularPolygonPage(),
       },
     );
   }
@@ -40,6 +42,11 @@ const PAGES_CONST = [
     "image": ImageConst.CIRCLE_ROUND_ANGLE,
     "title": "Round angle polygon",
     "click": PageConst.ROUND_ANGLE_POLYGON_PAGE,
+  },
+  {
+    "image": ImageConst.CIRCLE_ROUND_ANGLE,
+    "title": "Regular polygon with round angle",
+    "click": PageConst.REGULAR_POLYGON_PAGE,
   },
 ];
 
