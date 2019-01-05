@@ -44,7 +44,7 @@ const PAGES_CONST = [
     "click": PageConst.ROUND_ANGLE_POLYGON_PAGE,
   },
   {
-    "image": ImageConst.CIRCLE_ROUND_ANGLE,
+    "image": ImageConst.REGULAR_POLYGON,
     "title": "Regular polygon with round angle",
     "click": PageConst.REGULAR_POLYGON_PAGE,
   },
