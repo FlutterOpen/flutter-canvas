@@ -51,7 +51,7 @@ const PAGES_CONST = [
     "click": PageConst.REGULAR_POLYGON_PAGE,
   },
   {
-    "image": ImageConst.REGULAR_POLYGON,
+    "image": ImageConst.CIRCLE_ITEM,
     "title": "Circle",
     "click": PageConst.CIRCLE_PAGE,
   },
