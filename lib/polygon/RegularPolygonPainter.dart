@@ -29,6 +29,10 @@ SizeUtil get _sizeUtil {
 }
 
 class RegularPolygonPainter extends CustomPainter {
+  RegularPolygonPainter({this.startAngle});
+
+  final double startAngle;
+
   @override
   void paint(Canvas canvas, Size size) {
     //580*648
@@ -54,11 +58,12 @@ class RegularPolygonPainter extends CustomPainter {
         center: center,
         max: 250,
         min: 10,
-        count: 6,
+        count: 7,
         polygonCount: 4,
-        step: 30,
+        step: 40,
         colors: colors,
-        rotateRadio: 0.0);
+        rotateRadio: 0.1,
+        startAngle: startAngle);
     canvas.save();
     canvas.restore();
   }
@@ -71,7 +76,8 @@ class RegularPolygonPainter extends CustomPainter {
       int count = 1,
       int polygonCount,
       List<Color> colors,
-      rotateRadio = 0.1}) {
+      rotateRadio = 0.1,
+      double startAngle = 0.0}) {
     for (int i = 0; i < count; i++) {
       assert(polygonCount >= 3);
       assert(colors != null && colors.length > 0);
@@ -90,7 +96,7 @@ class RegularPolygonPainter extends CustomPainter {
       }
       List<Point> list4 = PolygonUtil.convertToPoints(
           center, radius, polygonCount,
-          startRadian: i * pi * rotateRadio);
+          startRadian: 2 * startAngle / max + i * pi * rotateRadio);
       _drawWithPoint(canvas, paint, list4);
     }
   }
@@ -113,5 +119,5 @@ class RegularPolygonPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

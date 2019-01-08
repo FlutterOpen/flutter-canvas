@@ -29,9 +29,12 @@ SizeUtil get _sizeUtil {
 }
 
 class CirclePainter extends CustomPainter {
+  CirclePainter({this.startAngle});
+
+  final double startAngle;
+
   @override
   void paint(Canvas canvas, Size size) {
-    //580*648
     if (size.width > 1.0 && size.height > 1.0) {
       print(">1.9");
       _sizeUtil.logicSize = size;
@@ -71,7 +74,7 @@ class CirclePainter extends CustomPainter {
       ],
       colors: [BLUE_DARK1, RED_DARK1, BLUE_DARK2, GREEN_NORMAL, YELLOW_NORMAL],
       paintWidth: 80.0,
-      startAngle: -pi / 2,
+      startAngle: 1.3 * startAngle / radius,
       hasEnd: true,
       hasCurrent: false,
       curPaintWidth: 45.0,
@@ -212,5 +215,5 @@ class CirclePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

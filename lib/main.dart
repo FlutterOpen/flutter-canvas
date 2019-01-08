@@ -6,6 +6,7 @@ import 'package:flutter_canvas/const/ImageConst.dart';
 import "package:flutter_canvas/polygon/RoundPolygonPage.dart";
 import 'package:flutter_canvas/polygon/RegularPolygonPage.dart';
 import 'package:flutter_canvas/circle/CirclePage.dart';
+import 'package:flutter_canvas/circle/CircleTrianglePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => RoundPolygonPage(),
         PageConst.REGULAR_POLYGON_PAGE: (context) => RegularPolygonPage(),
         PageConst.CIRCLE_PAGE: (context) => CirclePage(),
+        PageConst.CIRCLE_TRIANGLE_PAGE: (context) => CircleTrianglePage(),
       },
     );
   }
@@ -55,6 +57,11 @@ const PAGES_CONST = [
     "title": "Circle",
     "click": PageConst.CIRCLE_PAGE,
   },
+  {
+    "image": ImageConst.CIRCLE_TRIANGLE_ITEM,
+    "title": "Circle Triangle",
+    "click": PageConst.CIRCLE_TRIANGLE_PAGE,
+  },
 ];
 
 class _HomeState extends State<HomePage> {
@@ -71,7 +78,7 @@ class _HomeState extends State<HomePage> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
             mainAxisSpacing: 10,
-            childAspectRatio: 1.3,
+            childAspectRatio: 1.5,
           ),
           itemBuilder: (context, index) {
             return InkWell(
@@ -87,7 +94,8 @@ class _HomeState extends State<HomePage> {
                     alignment: AlignmentDirectional.bottomCenter,
                     padding: EdgeInsets.only(bottom: 10.0),
                     child: Text(
-                      PAGES_CONST[index]["title"],
+//                      PAGES_CONST[index]["title"],
+                      "",
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                   )

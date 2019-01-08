@@ -8,4 +8,5 @@ class PageConst {
   static const ROUND_ANGLE_POLYGON_PAGE = "Round angle polygon";
   static const REGULAR_POLYGON_PAGE = "Regular round angle polygon";
   static const CIRCLE_PAGE = "Circle page.";
+  static const CIRCLE_TRIANGLE_PAGE = "Circle Triangle page.";
 }
