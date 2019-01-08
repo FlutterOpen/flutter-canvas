@@ -8,6 +8,10 @@ class CirclePage extends StatefulWidget {
 }
 
 class _CircleState extends State<CirclePage> {
+  double _len = 0.0;
+  double _x = 0.0;
+  double _y = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +20,34 @@ class _CircleState extends State<CirclePage> {
       ),
       body: Container(
           child: Center(
+              child: GestureDetector(
+        onHorizontalDragStart: (detail) {
+          _x = detail.globalPosition.dx;
+        },
+        onVerticalDragStart: (detail) {
+          _y = detail.globalPosition.dy;
+        },
+        onHorizontalDragUpdate: (detail) {
+          setState(() {
+            _len -= detail.globalPosition.dx - _x;
+            _x = detail.globalPosition.dx;
+          });
+        },
+        onVerticalDragUpdate: (detail) {
+          setState(() {
+            _len += detail.globalPosition.dy - _y;
+            _y = detail.globalPosition.dy;
+          });
+        },
         child: Container(
           width: 300,
           height: 300,
           child: CustomPaint(
-            painter: CirclePainter(),
+            painter: CirclePainter(startAngle: _len),
+            child: Container(),
           ),
         ),
-      )),
+      ))),
     );
   }
 }

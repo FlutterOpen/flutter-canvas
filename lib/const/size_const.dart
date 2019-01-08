@@ -11,6 +11,7 @@ class SizeKeyConst {
   static const ROUND_ANGLE_KEY = "round_angle_size";
   static const REGULAR_POLYGON_KEY = "regular_angle_size";
   static const CIRCLE_KEY = "circle custom painter";
+  static const CIRCLE_TRIANGLE_KEY = "circle triangle painter";
   static const LOGO_KEY = "logo_page_size";
 }
 
@@ -24,6 +25,8 @@ class SizeUtil {
         Size(500.0, 500.0);
     getInstance(key: SizeKeyConst.LOGO_KEY).designSize = Size(580, 648.0);
     getInstance(key: SizeKeyConst.CIRCLE_KEY).designSize = Size(500.0, 500.0);
+    getInstance(key: SizeKeyConst.CIRCLE_TRIANGLE_KEY).designSize =
+        Size(500.0, 500.0);
   }
 
   static SizeUtil getInstance({key = SizeKeyConst.DEVICE_KEY}) {

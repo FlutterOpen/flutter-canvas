@@ -6,6 +6,7 @@ import 'package:flutter_canvas/const/ImageConst.dart';
 import "package:flutter_canvas/polygon/RoundPolygonPage.dart";
 import 'package:flutter_canvas/polygon/RegularPolygonPage.dart';
 import 'package:flutter_canvas/circle/CirclePage.dart';
+import 'package:flutter_canvas/circle/CircleTrianglePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         PageConst.ROUND_ANGLE_POLYGON_PAGE: (context) => RoundPolygonPage(),
         PageConst.REGULAR_POLYGON_PAGE: (context) => RegularPolygonPage(),
         PageConst.CIRCLE_PAGE: (context) => CirclePage(),
+        PageConst.CIRCLE_TRIANGLE_PAGE: (context) => CircleTrianglePage(),
       },
     );
   }
@@ -54,6 +56,11 @@ const PAGES_CONST = [
     "image": ImageConst.CIRCLE_ITEM,
     "title": "Circle",
     "click": PageConst.CIRCLE_PAGE,
+  },
+  {
+    "image": ImageConst.CIRCLE_ITEM,
+    "title": "Circle Triangle",
+    "click": PageConst.CIRCLE_TRIANGLE_PAGE,
   },
 ];
 
