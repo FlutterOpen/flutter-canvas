@@ -78,7 +78,7 @@ class _HomeState extends State<HomePage> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
             mainAxisSpacing: 10,
-            childAspectRatio: 1.3,
+            childAspectRatio: 1.5,
           ),
           itemBuilder: (context, index) {
             return InkWell(
@@ -94,7 +94,8 @@ class _HomeState extends State<HomePage> {
                     alignment: AlignmentDirectional.bottomCenter,
                     padding: EdgeInsets.only(bottom: 10.0),
                     child: Text(
-                      PAGES_CONST[index]["title"],
+//                      PAGES_CONST[index]["title"],
+                      "",
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                   )

@@ -35,7 +35,6 @@ class CirclePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    //580*648
     if (size.width > 1.0 && size.height > 1.0) {
       print(">1.9");
       _sizeUtil.logicSize = size;
