@@ -16,7 +16,7 @@ class _CircleState extends State<CirclePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(PageConst.LOGO_PAGE),
+        title: Text(PageConst.CIRCLE_PAGE),
       ),
       body: Container(
           child: Center(

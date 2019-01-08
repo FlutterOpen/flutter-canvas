@@ -16,7 +16,7 @@ class _CircleTriangleState extends State<CircleTrianglePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(PageConst.LOGO_PAGE),
+        title: Text(PageConst.CIRCLE_TRIANGLE_PAGE),
       ),
       body: Container(
           child: Center(

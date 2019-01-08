@@ -12,7 +12,7 @@ class _RoundState extends State<RoundPolygonPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(PageConst.LOGO_PAGE),
+        title: Text(PageConst.ROUND_ANGLE_POLYGON_PAGE),
       ),
       body: Container(
           child: Center(

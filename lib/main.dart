@@ -58,7 +58,7 @@ const PAGES_CONST = [
     "click": PageConst.CIRCLE_PAGE,
   },
   {
-    "image": ImageConst.CIRCLE_ITEM,
+    "image": ImageConst.CIRCLE_TRIANGLE_ITEM,
     "title": "Circle Triangle",
     "click": PageConst.CIRCLE_TRIANGLE_PAGE,
   },
