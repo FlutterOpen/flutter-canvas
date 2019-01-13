@@ -70,6 +70,6 @@ class SizeUtil {
     return s *
         sqrt((width * width + height * height) /
             (_designSize.width * _designSize.width +
-                _designSize.height * _designSize.width));
+                _designSize.height * _designSize.height));
   }
 }
